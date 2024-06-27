@@ -1,7 +1,8 @@
 export const errorHandler = (err, req, res, next) => {
   console.error(err);
-
-  // joiï¿½ë¿‰ï¿½ê½Œ è«›ì’–ê¹®ï¿½ë¸³ ï¿½ë¿‰ï¿½ìœ­ ï§£ì„Žâ”
+  // console.log(err.name);
+  // console.log(err.name === "ValidationError");
+  // joi¿¡¼­ ¹ß»ýÇÑ ¿¡·¯ Ã³¸®
   if (err.name === "ValidationError") {
     return res.status(400).json({
       status: 400,
@@ -9,10 +10,9 @@ export const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // æ´¹ï¿½ è«›ë½°ì“½ ï¿½ì‚ï¿½ê¸½ç§»ï¿½ ï§ì‚µë¸³ ï¿½ë¿‰ï¿½ìœ­ ï§£ì„Žâ”
+  // ±× ¹ÛÀÇ ¿¹»óÄ¡ ¸øÇÑ ¿¡·¯ Ã³¸®
   return res.status(500).json({
     status: 500,
-    message:
-      "ï¿½ì‚ï¿½ê¸½ç§»ï¿½ ï§ì‚µë¸³ ï¿½ë¿‰ï¿½ìœ­åª›ï¿½ è«›ì’–ê¹®ï¿½ë»½ï¿½ë’¿ï¿½ë•²ï¿½ë–Ž. æ„¿ï¿½ç”±ÑŠì˜„ï¿½ë¿‰å¯ƒï¿½ è‡¾ëª„ì“½ï¿½ë¹ äºŒì‡±ê½­ï¿½ìŠ‚.",
+    message: "¿¹»óÄ¡ ¸øÇÑ ¿¡·¯°¡ ¹ß»ýÇß½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇØ ÁÖ¼¼¿ä.",
   });
 };
